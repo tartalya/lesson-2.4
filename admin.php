@@ -4,6 +4,14 @@ $uploads_dir = 'uploads';
 
 require_once 'functions.php';
 
+$user = new user();
+
+if (!$user->is_admin()) {
+
+    http_response_code(403);
+    die();
+}
+
 if (isset($_FILES['testfile'])) {
 
     //var_dump($_FILES);
