@@ -22,6 +22,7 @@ if (isset($_FILES['testfile'])) {
         //$_FILES['testfile']['name'] = $filename;
 
         if (move_uploaded_file($_FILES['testfile']['tmp_name'], $uploads_dir . '/' . $filename)) {
+            
 
             echo 'Файл успешно загружен<br>';
             echo 'Вы будете перенаправлены на страницу со списком тестов через 3 секунды';
@@ -33,6 +34,7 @@ if (isset($_FILES['testfile'])) {
 
 
             $res[] = array('path' => "$uploads_dir/$filename", 'name' => $_POST['testname']);
+            
 
 
 

@@ -65,13 +65,14 @@ if (!isset($_GET['id'])) {
     die();
 }
 
+
 if (!get_test($_GET['id'])) {
 
     http_response_code(404);
     echo '404 нет такого теста';
     die();
 }
-
+ 
 
 $test = get_test($_GET['id']);
 

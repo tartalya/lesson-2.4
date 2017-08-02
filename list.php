@@ -27,6 +27,12 @@ foreach ($result as $key => $value) {
 
 
     echo '<a href="test.php?id=' . $key . '">' . $value['name'] . '</a>';
+    if ($user->is_admin()) {
+        
+        echo ' <a href="delete.php?id=' . $key . '">Удалить это тест</a>';
+        
+    }
+    
     echo '<br><br>';
 }
 

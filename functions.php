@@ -29,18 +29,21 @@ function draw_admin_form() {
 
 function get_test($id) {
 
+    $id = intval($id);
 
     $test_path = json_decode(file_get_contents('list.db'), true);
 
 
-
-    if (!$test_path[$id]['path']) {
+    if (!isset($test_path[$id]['path'])) {
 
         return false;
     }
 
+
     $file = $test_path[$id]['path'];
+
     $test = json_decode(file_get_contents($file), true);
+
 
     return $test;
 }
