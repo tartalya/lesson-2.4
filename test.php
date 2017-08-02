@@ -37,8 +37,16 @@ if (isset($_POST['send'])) {
     //echo 'Здравствуйте ' . $_POST['username'];
     //echo '<br>';
     //echo 'Ваша оценка за прохождение теста ' . $finish_result;
-
-    $sert_string = 'Выдано ' . $_POST['username']
+    
+    if (isset($_COOKIE['name'])) {
+        
+        $username = $_COOKIE['name'];
+    } else {
+        
+        $username = $_COOKIE['guest_name'];
+    }
+    
+    $sert_string = 'Выдано ' . $username
             . ' c оценкой ' . $finish_result;
 
 
