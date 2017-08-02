@@ -42,7 +42,7 @@ function get_test($id) {
 
     $file = $test_path[$id]['path'];
 
-    $test = json_decode(file_get_contents($file), true);
+    $test = json_decode(file_get_contents($file), true); // Блин запомни что тесты должны быть в UTF-8 !!!!!!!
 
 
     return $test;

@@ -37,15 +37,15 @@ if (isset($_POST['send'])) {
     //echo 'Здравствуйте ' . $_POST['username'];
     //echo '<br>';
     //echo 'Ваша оценка за прохождение теста ' . $finish_result;
-    
+
     if (isset($_COOKIE['name'])) {
-        
+
         $username = $_COOKIE['name'];
     } else {
-        
+
         $username = $_COOKIE['guest_name'];
     }
-    
+
     $sert_string = 'Выдано ' . $username
             . ' c оценкой ' . $finish_result;
 
@@ -72,7 +72,7 @@ if (!get_test($_GET['id'])) {
     echo '404 нет такого теста';
     die();
 }
- 
+
 
 $test = get_test($_GET['id']);
 

@@ -7,14 +7,11 @@ $error_msg = '';
 $user = new user();
 
 if (empty($_COOKIE['blc'])) {
-    
-static $login_attempts = 0;
 
-}
-else {
-   
+    static $login_attempts = 0;
+} else {
+
     $login_attempts = $_COOKIE['blc'];
-    
 }
 
 
@@ -28,11 +25,10 @@ if (isset($_COOKIE['passkey']) && isset($_COOKIE['login'])) {
 
             echo 'Здравствуйте ' . $_COOKIE['name'];
             echo '<br>';
-               
         }
 
         echo '<a href="logout.php">Выйти</a>';
-        
+
         die;
     }
 }
@@ -58,7 +54,7 @@ if (isset($_POST['submit'])) {
 
             $error_msg = 'Неверный логин или пароль';
             setcookie('blc', ++$login_attempts, time() + 160);
-            
+
             include'templates/login.php';
         }
     } else if (!empty($_POST['login']) && !$user->exist($_POST['login']) && (empty($_POST['password']))) {
@@ -66,7 +62,6 @@ if (isset($_POST['submit'])) {
         echo 'Здравствуй гость ' . $_POST['login'];
         setcookie('guest_name', $_POST['login']);
         header('location: list.php');
-        
     } else {
 
         $error_msg = 'Ошибка авторизации';
