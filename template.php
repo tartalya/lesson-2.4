@@ -26,7 +26,7 @@
         }
         ?>
         <br>
-        <input type="text" name="username" placeholder="Пожалуйста представьтесь">
+        <!-- <input type="text" name="username" placeholder="Пожалуйста представьтесь"> -->
         <input type="hidden" name="testid" value="<?= $_GET['id'] ?>">
         <input type="submit" name="send" value="отправить">
     </form>

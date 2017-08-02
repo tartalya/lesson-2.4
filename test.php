@@ -4,6 +4,14 @@ require_once 'functions.php';
 
 $uploads_dir = 'uploads';
 
+$user = new user();
+
+
+if (empty($_COOKIE['guest_name']) && !$user->is_auth(isset($_COOKIE['login']), isset($_COOKIE['passkey']))) {
+
+    header('location: index.php');
+}
+
 
 if (isset($_POST['send'])) {
 
