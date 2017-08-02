@@ -1,4 +1,13 @@
 <?php
+if (isset($_COOKIE['blc'])) {
+
+    if (intval($_COOKIE['blc']) > 10) {
+
+
+        echo 'you banned';
+        die;
+    }
+}
 
 function draw_admin_form() {
     ?>
@@ -91,8 +100,8 @@ class user {
 
     function start_auth($login, $password, $expire = 0) {
 
-        
-        
+
+
         foreach ($this->users as $value) {
 
 
@@ -101,19 +110,19 @@ class user {
                 $this->passkey = $this->generate_passkey();
 
                 $this->users[$value['id']]['passkey'] = $this->passkey;
-                
-                
-                
+
+
+
                 setcookie('login', $value['login'], $expire);
                 setcookie('passkey', $this->passkey, $expire);
                 setcookie('user_id', $value['id'], $expire);
                 setcookie('name', $value['name'], $expire);
 
-                
+
 
                 file_put_contents('login.json', json_encode($this->users));
-                
-                
+
+
 
                 return TRUE;
             }
@@ -123,21 +132,15 @@ class user {
     }
 
     function is_admin() {
-        
-        
-        
+
+
+
         foreach ($this->users as $value) {
-            
-            echo '<pre>';
-            var_dump($this->users[0]['passkey']);
-            
-            var_dump($_COOKIE);
-            
-            if ($_COOKIE['passkey'] == $value['passkey'] && $value['role'] == 'admin') {
-                
+
+            if (isset($_COOKIE['passkey']) == $value['passkey'] && $value['role'] == 'admin') {
+
                 return true;
             }
-            
         }
         return false;
     }
@@ -167,7 +170,7 @@ class user {
     }
 
     function is_auth($login, $passkey) {
-        
+
         foreach ($this->users as $value) {
 
             if ($login == $value['login'] && $passkey == $value['passkey']) {
@@ -178,8 +181,6 @@ class user {
 
         return false;
     }
-        
-    
-    
+
 }
 ?>
