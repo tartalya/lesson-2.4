@@ -19,7 +19,12 @@ if (!json_decode(file_get_contents('list.db'), true)) {
     die;
 }
 
-$result = json_decode(file_get_contents('list.db'), true);
+if (is_null($result = json_decode(file_get_contents('list.db'), true))) {
+    
+    echo 'Файл базы поврежден или имеет не верный формат';
+    die;
+}
+
 
 foreach ($result as $key => $value) {
 
