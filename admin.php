@@ -26,7 +26,7 @@ if (isset($_FILES['testfile'])) {
         draw_admin_form();
     } else {
 
-        $filename = $extension[0] . $extension[1]; //можно было бы и принудительно приписывать .json
+        $filename = $extension[0] . '.' . $extension[1]; //можно было бы и принудительно приписывать .json
         //$_FILES['testfile']['name'] = $filename;
 
         if (file_exists($uploads_dir . '/' . $filename)) {
